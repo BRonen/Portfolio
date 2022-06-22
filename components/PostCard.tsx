@@ -10,7 +10,12 @@ interface IPostCard{
 export default function IPostCard({post}: IPostCard){
   const tagLink = (tag: string, index: number) => (
     <Link href={`/blog/tags/${tag}`} key={index}>
-      <div>[{tag}]</div>
+      <div className='
+        transition-all duration-500
+        hover:text-lg hover:underline
+      '>
+        {`<${tag}/>`}
+      </div>
     </Link>
   )
 
