@@ -3,7 +3,7 @@ const ListItem = ({content, href}) => (
   <a href={href} className={`
     transition-all
     font-bold
-    text-xl hover:text-1.5xl
+    text-xl hover:scale-110
   `}>
     {content}
   </a>
@@ -14,7 +14,8 @@ const ListDot = () => <div className='w-2 h-2 rounded-full bg-stone-900 dark:bg-
 export default function Footer(){
   return(
     <footer className={`
-      flex flex-col items-center p-6 gap-2
+      flex flex-col items-center justify-center
+      p-6 gap-2
       bg-stone-300 text-stone-900
       dark:bg-stone-900 dark:text-stone-300
       font-mono
