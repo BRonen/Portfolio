@@ -11,7 +11,11 @@ export const Header = () => (
     p-5 gap-3
     text-stone-900 dark:text-stone-300
   '>
-    <div className='relative aspect-square h-[80%] rounded shadow-lg shadow-stone-400 dark:shadow-black'>
+    <div className='
+      relative aspect-square h-full
+      rounded shadow-lg
+      shadow-stone-400 dark:shadow-black
+    '>
       <Image className='rounded'
         src='https://github.com/bronen.png'
         alt='Picture of the author'
