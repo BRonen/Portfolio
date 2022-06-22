@@ -84,7 +84,7 @@ export const ProfessionalExperience = () => (
 
 export const Education = () => (
   <>
-    <h1 className='font-mono text-2xl'>EDUCATION</h1>
+    <h1 className='font-mono text-2xl mt-8'>EDUCATION</h1>
     <hr className='my-4'/>
     <p className='flex flex-col gap-5'>
       <div className='flex flex-col'>
