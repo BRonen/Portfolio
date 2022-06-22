@@ -31,7 +31,13 @@ const createPost = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     })
 
-    return res.json(result)
+    const post = {
+      title: result.title,
+      content: result.content,
+      tags: tags.split(';')
+    }
+
+    return res.json(post)
 
   }catch(error){
     return res.json({error})
