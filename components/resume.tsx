@@ -32,7 +32,11 @@ export const Header = () => (
         <span>{'RODRIGUES/>'}</span>
       </h1>
 
-      <div className='flex flex-col text-base font-sans items-center'>
+      <div className='
+        flex flex-col
+        items-center sm:items-start
+        text-base font-sans
+      '>
         <p>Brazil</p>
         <p className='mb-4'>Rio de Janeiro, RJ</p>
 
