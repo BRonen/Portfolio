@@ -10,7 +10,9 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider enableSystem={true} attribute='class'>
       <div className='grid grid-rows-layout h-screen'>
         <Header/>
+
         <Component {...pageProps}/>
+
         <Footer/>
       </div>
     </ThemeProvider>

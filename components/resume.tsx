@@ -15,7 +15,6 @@ export const Header = () => (
       <Image className='rounded'
         src='https://github.com/bronen.png'
         alt='Picture of the author'
-        heigth={150} width={150}
         layout='fill'
       />
     </div>

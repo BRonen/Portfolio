@@ -31,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     console.log(data)
     if(!isLoading && !isError && data)
-      setPosts(data.posts)
+      setPosts(data as IPost[])
 
   }, [data, isLoading, isError])
 

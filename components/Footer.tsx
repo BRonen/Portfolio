@@ -1,15 +1,15 @@
 
-const ListItem = ({children, href}) => (
+const ListItem = ({content, href}) => (
   <a href={href} className={`
     transition-all
     font-bold
-    text-xl hover:text-2xl
+    text-xl hover:text-1.5xl
   `}>
-    {children}
+    {content}
   </a>
 )
 
-const ListDot = () => <div className='w-2 h-2 rounded-full bg-stone-900'></div>
+const ListDot = () => <div className='w-2 h-2 rounded-full bg-stone-900 dark:bg-stone-300'></div>
 
 export default function Footer(){
   return(
@@ -23,21 +23,21 @@ export default function Footer(){
         © 2022 Brenno Rodrigues. All rights reserved.
       </h3>
       <div className='flex items-baseline gap-4 links'>
-        <ListItem href='https://twitter.com/brennokkkk'>
-          Twitter
-        </ListItem>
+        <ListItem
+          href='https://twitter.com/brennokkkk'
+          content='Twitter'/>
 
         <ListDot/>
 
-        <ListItem href='https://github.com/bronen'>
-          Github
-        </ListItem>
+        <ListItem
+          href='https://github.com/bronen'
+          content='Github'/>
 
         <ListDot/>
         
-        <ListItem href='https://www.linkedin.com/in/brennorodriguess/'>
-          Linkedin
-        </ListItem>
+        <ListItem
+          href='https://www.linkedin.com/in/brennorodriguess/'
+          content='Linkedin'/>
       </div>
     </footer>
   )

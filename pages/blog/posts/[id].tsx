@@ -30,14 +30,14 @@ const PostViewer = ({post}: IPostViewerProps) => {
 
 export default function Home(){
   const router = useRouter()
-  const { id } = router.query
+  const id = router.query.id as string
 
-  const [post, setPost] = useState()
+  const [post, setPost] = useState<IPost>()
   const { data, isLoading, isError } = usePosts(id)
 
   useEffect(() => {
     if(!isLoading && !isError && data)
-      setPost(data)
+      setPost(data as IPost)
   }, [data])
 
   if(!post)

@@ -15,7 +15,7 @@ const getAllPosts = async (req: NextApiRequest, res: NextApiResponse) => {
 
   console.log(posts)
 
-  return res.json({posts})
+  return res.json(posts)
 }
 
 const createPost = async (req: NextApiRequest, res: NextApiResponse) => {

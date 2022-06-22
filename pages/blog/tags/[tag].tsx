@@ -32,8 +32,10 @@ export default function Home() {
   const postFilter = (post: IPost) => post.tags.includes(tag)
 
   useEffect(() => {
-    if(!isLoading && !isError && data)
-      setPosts( data.posts.filter(postFilter) )
+    if(!isLoading && !isError && data){
+      const unfilteredPost = data as IPost[]
+      setPosts( unfilteredPost.filter(postFilter) )
+    }
   }, [data, isLoading, isError, tag])
 
   return(

@@ -21,7 +21,18 @@ module.exports = {
       'mono': ['Space Mono', ...defaultTheme.fontFamily.mono],
     },
     fontSize: {
-      '3.5xl': ['2rem', '2.35rem']
+      'sm': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      '1.5xl': '1.5rem',
+      '2xl': '1.5rem',
+      '3xl': '1.875rem',
+      '3.5xl': '2rem',
+      '4xl': '2.25rem',
+      '5xl': '3rem',
+      '6xl': '4rem',
+      '7xl': '5rem',
     }
   },
   plugins: [],

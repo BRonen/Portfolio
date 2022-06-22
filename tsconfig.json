@@ -16,12 +16,14 @@
     "module": "esnext",
     "isolatedModules": true,
     "jsx": "preserve",
+    "resolveJsonModule": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/blog/posts/[id].tsx"  ],
+    "**/*.tsx",
+    "pages/blog/posts/[id].tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
