@@ -13,8 +13,6 @@ const getAllPosts = async (req: NextApiRequest, res: NextApiResponse) => {
     updatedAt: result.updatedAt.toLocaleDateString()
   }))
 
-  console.log(posts)
-
   return res.json(posts)
 }
 
