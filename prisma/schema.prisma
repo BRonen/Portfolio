@@ -8,10 +8,10 @@ datasource db {
 }
 
 model Post {
-  id           Int         @id @default(autoincrement())
-  title        String      @unique
-  content      String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  tags         String?
+  id        Int      @id @default(autoincrement())
+  title     String   @unique
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tags      String?
 }
