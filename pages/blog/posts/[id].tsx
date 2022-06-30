@@ -1,16 +1,21 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
+
+import { getPostById } from '../../../helpers/api/posts'
 
 import { IPost } from '../../../types/posts'
-
-import usePosts from '../../../helpers/usePosts'
 
 interface IPostViewerProps{
   post: IPost
 }
 
-const PostViewer = ({post}: IPostViewerProps) => {
+const components = {
+  h1: props => <h1 {...props} className='underline'/>,
+  h2: props => <h2 {...props} className='hover:underline'/>
+}
+
+const PostViewer = ({post}) => {
   return(
     <div className='flex flex-col justify-around items-center p-6'>
       <div className={`
@@ -22,34 +27,29 @@ const PostViewer = ({post}: IPostViewerProps) => {
         <h1 className='text-center text-2xl font-semibold'>{post.title}</h1>
         <hr className='pt-3'/>
         <h2 className='text-right text-xl p-1'>{post.updatedAt}</h2>
-        <p>{post.content}</p>
+        <MDXRemote {...post.content} components={components} />
       </div>
     </div>
   )
 }
 
-export default function Home(){
-  const router = useRouter()
-  const id = router.query.id as string
-
-  const [post, setPost] = useState<IPost>()
-  const { data, isLoading, isError } = usePosts(id)
-
-  useEffect(() => {
-    if(!isLoading && !isError && data)
-      setPost(data as IPost)
-  }, [data])
-
-  if(!post)
-    return null
-
+export default function Home({post}){
   return(
     <>
       <Head>
-        <title>Blog - {id}</title>
+        <title>Blog - {post.id}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PostViewer post={post}/>
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  const { id } = context.query
+
+  const post = await getPostById(id)
+  post.content = await serialize(post.content)
+
+  return { props: { post } }
 }
