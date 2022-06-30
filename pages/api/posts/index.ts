@@ -15,7 +15,7 @@ const postPost = async (req: NextApiRequest, res: NextApiResponse) => {
   if(!title || !content)
     return res.json({})
 
-  const post: IPost = createPost({title, content, tags})    
+  const post: IPost = await createPost({title, content, tags})    
 
   return res.json(post)
 }
