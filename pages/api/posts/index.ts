@@ -32,7 +32,9 @@ const createPost = async (req: NextApiRequest, res: NextApiResponse) => {
     const post = {
       title: result.title,
       content: result.content,
-      tags: tags.split(';')
+      tags: result.tags.split(';'),
+      createdAt: result.createdAt.toLocaleDateString(),
+      updatedAt: result.updatedAt.toLocaleDateString()
     }
 
     return res.json(post)
