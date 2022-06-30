@@ -25,7 +25,7 @@ export const Header = () => (
     <div className='flex items-center flex-col sm:flex-row gap-1'>
       <h1 className='
         flex flex-col justify-center items-center
-        w-[50vw] text-3.5xl sm:text-5xl
+        w-[50vw] text-2.5xl sm:text-5xl
         font-mono font-bold
       '>
         <span>{'<BRENNO P.'}</span>
