@@ -29,7 +29,6 @@ export default function Home() {
   const { data, isLoading, isError } = usePosts()
 
   useEffect(() => {
-    console.log(data)
     if(!isLoading && !isError && data)
       setPosts(data as IPost[])
 
