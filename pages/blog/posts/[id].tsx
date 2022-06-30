@@ -46,7 +46,7 @@ export default function Home({post}){
 }
 
 export async function getServerSideProps(context) {
-  const { id } = context.query
+  const id = context.query.id as string
 
   const post = await getPostById(id)
   post.content = await serialize(post.content)

@@ -4,7 +4,7 @@ import { getPostById, updatePostById, deletePostById } from '../../../helpers/ap
 import { IPost } from '../../../types/posts'
 
 const getPost = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { id } = req.query
+  const id = req.query.id as string
 
   const post: IPost | undefined = await getPostById(id)
 
@@ -15,7 +15,7 @@ const getPost = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 const updatePost = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { id } = req.query
+  const id = req.query.id as string
   const { title, content } = req.body
 
   if(!id)
@@ -30,7 +30,7 @@ const updatePost = async (req: NextApiRequest, res: NextApiResponse) => {
 }
   
 const deletePost = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { id } = req.query
+  const id = req.query.id as string
 
   const post = await deletePostById(id)
 
