@@ -15,7 +15,7 @@ const components = {
   h2: props => <h2 {...props} className='hover:underline'/>
 }
 
-const PostViewer = ({post}) => {
+const PostViewer = ({post, content}) => {
   return(
     <div className='flex flex-col justify-around items-center p-6'>
       <div className={`
@@ -27,20 +27,20 @@ const PostViewer = ({post}) => {
         <h1 className='text-center text-2xl font-semibold'>{post.title}</h1>
         <hr className='pt-3'/>
         <h2 className='text-right text-xl p-1'>{post.updatedAt}</h2>
-        <MDXRemote {...post.content} components={components} />
+        <MDXRemote {...content} components={components} />
       </div>
     </div>
   )
 }
 
-export default function Home({post}){
+export default function Home({post, content}){
   return(
     <>
       <Head>
         <title>Blog - {post.id}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PostViewer post={post}/>
+      <PostViewer post={post} content={content}/>
     </>
   )
 }
@@ -49,7 +49,7 @@ export async function getServerSideProps(context) {
   const id = context.query.id as string
 
   const post = await getPostById(id)
-  post.content = await serialize(post.content)
+  const content = await serialize(post.content)
 
-  return { props: { post } }
+  return { props: { post, content } }
 }
