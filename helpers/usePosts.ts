@@ -2,7 +2,7 @@ import useSWR, { Fetcher } from "swr"
 
 import { IPost } from '../types/posts'
 
-const fetcher: Fetcher<IPost | IPost[]> = async url => {
+const fetcher: Fetcher<IPost | IPost[]> = async (url: string) => {
   const response = await fetch(url)
   const data = await response.json()
   return data
