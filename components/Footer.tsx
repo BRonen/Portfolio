@@ -3,13 +3,13 @@ const ListItem = ({content, href}) => (
   <a href={href} className={`
     transition-all
     font-bold
-    text-xl hover:scale-110
+    text-base sm:text-xl hover:scale-110
   `}>
     {content}
   </a>
 )
 
-const ListDot = () => <div className='w-2 h-2 rounded-full bg-stone-900 dark:bg-stone-300'></div>
+const ListDot = () => <div className='w-[5px] h-[5px] sm:w-[6px] sm:h-[6px] rounded-full bg-stone-900 dark:bg-stone-300'></div>
 
 export default function Footer(){
   return(
@@ -20,10 +20,10 @@ export default function Footer(){
       dark:bg-stone-900 dark:text-stone-300
       font-mono
     `}>
-      <h3 className='text-xl font-semibold'>
+      <h3 className='text-lg sm:text-xl text-center font-semibold'>
         © 2022 Brenno Rodrigues. All rights reserved.
       </h3>
-      <div className='flex items-baseline gap-4 links'>
+      <div className='flex items-center gap-4 links'>
         <ListItem
           href='https://twitter.com/brennokkkk'
           content='Twitter'/>
