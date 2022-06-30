@@ -1,58 +1,38 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../helpers/db'
+import { getAllPosts, createPost } from '../../../helpers/api/posts'
 
-const getAllPosts = async (req: NextApiRequest, res: NextApiResponse) => {
-  const results = await prisma.post.findMany({})
+import { IPost } from '../../../types/posts'
 
-  const posts = results.map(result => ({
-    id: result.id,
-    title: result.title,
-    content: result.content,
-    tags: result.tags.split(';'),
-    createdAt: result.createdAt.toLocaleDateString(),
-    updatedAt: result.updatedAt.toLocaleDateString()
-  }))
+const getPost = async (req: NextApiRequest, res: NextApiResponse) => {
+  const posts: IPost[] = await getAllPosts()
 
   return res.json(posts)
 }
 
-const createPost = async (req: NextApiRequest, res: NextApiResponse) => {
+const postPost = async (req: NextApiRequest, res: NextApiResponse) => {
   const { title, content, tags } = req.body
 
   if(!title || !content)
     return res.json({})
 
-  try{
-    const result = await prisma.post.create({
-      data: {
-        title, content, tags: tags.join(';')
-      },
-    })
+  const post: IPost = createPost({title, content, tags})    
 
-    const post = {
-      title: result.title,
-      content: result.content,
-      tags: result.tags.split(';'),
-      createdAt: result.createdAt.toLocaleDateString(),
-      updatedAt: result.updatedAt.toLocaleDateString()
-    }
-
-    return res.json(post)
-
-  }catch(error){
-    return res.json({error})
-  }
+  return res.json(post)
 }
 
 export default async(req: NextApiRequest, res: NextApiResponse) => {
-  switch (req.method){
-    case "GET":
-      return await getAllPosts(req, res)
+  try{
+    switch (req.method){
+      case "GET":
+        return await getPost(req, res)
 
-    case "POST":
-      return await createPost(req, res)
+      case "POST":
+        return await postPost(req, res)
 
-    default:
-      return res.status(405).send("Method Not Allowed")
+      default:
+        return res.status(405).send("Method Not Allowed")
+    }
+  }catch(e){
+    res.status(500).json({error: 'Server internal error'})
   }
 }

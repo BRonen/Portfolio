@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../helpers/db'
+import prisma from '../../../helpers/api/db'
 
 const readUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const users = await prisma.user.findMany({})

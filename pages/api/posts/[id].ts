@@ -1,81 +1,58 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import prisma from '../../../helpers/db'
+import { getPostById, updatePostById, deletePostById } from '../../../helpers/api/posts'
 
-const getPostById = async (req: NextApiRequest, res: NextApiResponse) => {
+import { IPost } from '../../../types/posts'
+
+const getPost = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
 
-  const result = await prisma.post.findUnique({
-    where: { id: Number(id) }
-  })
+  const post: IPost | undefined = await getPostById(id)
 
-  if(!result)
+  if(!post)
     return res.status(404).json({error: 'Post not found'})
-
-  const post = {
-    id: result.id,
-    title: result.title,
-    content: result.content,
-    tags: result.tags.split(';'),
-    createdAt: result.createdAt.toLocaleDateString(),
-    updatedAt: result.updatedAt.toLocaleDateString()
-  }
-  
-  console.log(post)
 
   return res.json(post)
 }
 
-const updatePostById = async (req: NextApiRequest, res: NextApiResponse) => {
+const updatePost = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
-  const { title, email } = req.body
+  const { title, content } = req.body
 
   if(!id)
     return res.json({error: 'invalid post id'})
 
-  if(!title && !email)
+  if(!title && !content)
     return res.json({error: 'invalid data input'})
 
-  try{
-    const result = await prisma.post.update({
-      where: { id: Number(id) },
-      data: { title, email }
-    })
+  const post = await updatePostById(id, {title, content})
 
-    return res.json(result)
-
-  }catch(error){
-    console.log(error)
-    return res.json({error})
-  }
+  return res.json(post)
 }
   
-const deletePostById = async (req: NextApiRequest, res: NextApiResponse) => {
+const deletePost = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query
 
-  try{
-    const result = await prisma.post.delete({
-      where: { id: Number(id) }
-    })
+  const post = await deletePostById(id)
 
-    return res.json(result)
-
-  }catch(error){
-    return res.json({error})
-  }
+  return res.json(post)
 }
 
 export default async(req: NextApiRequest, res: NextApiResponse) => {
-  switch (req.method){
-    case "GET":
-      return await getPostById(req, res)
-      
-    case "PUT":
-      return await updatePostById(req, res)
+  try{
+    switch (req.method){
+      case "GET":
+        return await getPost(req, res)
+        
+      case "PUT":
+        return await updatePost(req, res)
 
-    case "DELETE":
-      return await deletePostById(req, res)
+      case "DELETE":
+        return await deletePost(req, res)
 
-    default:
-      return res.status(405).send("Method Not Allowed")
+      default:
+        return res.status(405).send("Method Not Allowed")
+    }
+  }catch(e){
+    res.status(500).json({error: 'Server internal error'})
   }
 }
