@@ -37,7 +37,10 @@ export default function IPostCard({post}: IPostCard){
         <div className='flex'>
           <h4>{post.createdAt}</h4>
           
-          <h4 className='flex justify-end gap-3 w-full'>{
+          <h4 className='
+            hidden sm:flex justify-end
+            gap-3 w-full
+          '>{
             post.tags.map(tagLink)
           }</h4>
         </div>
