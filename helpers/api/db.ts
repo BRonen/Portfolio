@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 
-let prisma
+let prisma: PrismaClient
 
 if (!global.prisma)
   global.prisma = new PrismaClient()
