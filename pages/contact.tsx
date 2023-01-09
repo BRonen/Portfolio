@@ -2,14 +2,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import FormMultiStep, { IFormReducerState } from '../components/MultiStepForm'
+import FormMultiStep, { FormReducerState } from '../components/MultiStepForm'
 import Loading from '../components/Loading'
 
 const USERNAME_REGEX = /^[a-zA-Z]+( +[a-zA-Z]+)*$/
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-const initialState: IFormReducerState = {
-  step: 0,
+const initialState: FormReducerState = {
+  current: 0,
   steps: [
     { field: 'Name', value: '', type: 'text', validation: USERNAME_REGEX },
     { field: 'Email', value: '', type: 'email', validation: EMAIL_REGEX },
@@ -23,7 +23,7 @@ const ContactPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>(null)
 
-  const authorizationHandler = async ({ steps: rawData }: IFormReducerState) => {
+  const authorizationHandler = async ({ steps: rawData }: FormReducerState) => {
     const parsedData: Record<string, string> = {}
 
     for (const { field, value } of rawData)
@@ -56,7 +56,7 @@ const ContactPage: React.FC = () => {
         <h1 className="text-3xl">Please contact me:</h1>
         {
           isLoading ?
-            <Loading /> :
+            <Loading className="mt-16" /> :
             <FormMultiStep onSubmit={authorizationHandler} initialState={initialState} />
         }
         {error && <small>{error}</small>}

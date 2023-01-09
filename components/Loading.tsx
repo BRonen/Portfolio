@@ -1,6 +1,10 @@
-const Loading: React.FC = () => {
+interface LoadingProps {
+    className?: string
+}
+
+const Loading: React.FC<LoadingProps> = ({className}) => {
     return(<>
-        <p className="text-5xl text-center">⧲</p>
+        <p className={`text-5xl text-center ${className}`}>⧲</p>
         <style jsx>{`
             p {
                 animation: loop 1.5s linear infinite;
