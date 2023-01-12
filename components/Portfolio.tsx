@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ImageFallback from './ImageFallback'
 import Loading from './Loading'
 import { useGithubRepositories } from '../hooks/useGithub'
 
@@ -17,13 +17,15 @@ const Repo: React.FC<Repo> = ({ index, ...repo }) => {
         flex flex-col-reverse md:justify-between
         ${index % 2? 'md:flex-row-reverse' : 'md:flex-row'}
       `}>
-        <div className="w-full p-4">
+        <div className="w-full p-4 p">
           <h1 className="font-bold text-center text-2xl mb-2">{repo.name}</h1>
           <p>{repo.description}</p>
         </div>
         <figure className="relative md:max-w-md md:w-3/4 h-52 overflow-hidden">
-          <Image className="object-cover rounded-lg"
-            src="https://raw.githubusercontent.com/BRonen/Doom-fire/main/.github/doom-fire.png"
+          <ImageFallback
+            src={`https://raw.githubusercontent.com/BRonen/${repo.name}/main/.github/cover.png`}
+            fallbackSrc="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+            className="object-cover rounded-lg"
             alt={repo.description}
             layout="fill"
           />

@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: 'raw.githubusercontent.com',
         pathname: '/BRonen/**/main/.github/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'github.githubassets.com',
+        pathname: '/images/modules/logos_page/GitHub-Mark.png',
+      },
     ],
   },
 }
