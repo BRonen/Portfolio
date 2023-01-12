@@ -8,7 +8,7 @@ interface ImageFallbackProps extends ImageProps {
   alt: string
 }
 
-const ImageFallback: FC<ImageFallbackProps> = ({ src, fallbackSrc, ...rest }) => {
+const ImageFallback: FC<ImageFallbackProps> = ({ src, fallbackSrc, alt, ...rest }) => {
   const [imgSrc, setSrc] = useState<string>(src)
 
   return (
@@ -19,6 +19,7 @@ const ImageFallback: FC<ImageFallbackProps> = ({ src, fallbackSrc, ...rest }) =>
         if (result.naturalWidth === 0)
           setSrc(fallbackSrc);
       }}
+      alt={alt}
       {...rest}
     />
   )
