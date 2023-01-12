@@ -34,7 +34,7 @@ const contactHandler = async (
   try {
     const service = new NotionService(process.env.NOTION_TOKEN!)
 
-    const payload = service.formatContactPayload('test 2023', 'heelo@dawds.com', '# contenteeeeeee')
+    const payload = service.formatContactPayload(name, email, content)
 
     const contact = await service.fetch('POST', '/', payload)
 
