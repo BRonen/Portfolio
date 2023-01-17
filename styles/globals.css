@@ -4,6 +4,8 @@
 
 body {
   height: 100vh;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
 }
 
 #__next {
@@ -18,4 +20,8 @@ body {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+li {
+  margin: 10px 0;
 }
