@@ -27,7 +27,7 @@ const Repo: React.FC<Repo> = ({ index, ...repo }) => {
             fallbackSrc="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
             className="object-cover rounded-lg"
             alt={repo.description}
-            layout="fill"
+            fill
           />
         </figure>
       </a>
