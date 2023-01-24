@@ -37,8 +37,8 @@ const Header: React.FC<RegisterProps> = () => {
   return (
     <header
       className="
-      flex flex-col md:flex-row justify-between
-      p-10 md:px-60 bg-gradient-to-b
+      flex flex-col lg:flex-row justify-between
+      py-12 px-20 md:px-40 bg-gradient-to-b
       dark:from-stone-800 dark:via-[#0F0F0F]
       from-stone-500 via-[#F0F0F0]
     "
@@ -46,13 +46,13 @@ const Header: React.FC<RegisterProps> = () => {
       <h1 className="font-bold text-4xl">
         <Link className="hover:underline" href="/">
           <b>{"<BRENNO P."}</b>
-          <b>{"RODRIGUES/>"}</b>
+          <b>{" RODRIGUES/>"}</b>
         </Link>
       </h1>
 
       <nav
         className="
-        flex justify-end md:justify-start
+        flex justify-end lg:justify-start
         items-center text-lg gap-7 py-5 md:py-0
       "
       >

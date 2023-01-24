@@ -1,20 +1,19 @@
 import Image from "next/image";
 
 export const ResumeHeader: React.FC = () => (
-  <section className="flex flex-col lg:flex-row justify-between items-center mb-5">
-    {/*     
-    <div className="hidden lg:block relative aspect-square h-full shadow-xl">
+  <section className="flex flex-col lg:flex-row lg:justify-end items-center mb-5">
+        
+    <div className="hidden lg:block relative aspect-square shadow-xl lg:w-1/3 min-w-[150px] max-w-[200px] lg:mr-auto">
       <Image
         className="rounded"
         src="https://github.com/bronen.png"
-        alt="Picture of me on github "
+        alt="Picture of me on github"
         fill
-        sizes="100vw"
       />
     </div> 
-    */}
+   
 
-    <div className="flex flex-col text-center lg:text-left">
+    <div className="flex flex-col text-center lg:text-right">
       <p>Brazil</p>
       <p>Rio de Janeiro, RJ</p>
       <hr className="my-1" />
