@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const ResumeHeader: React.FC = () => (
   <section className="flex flex-col lg:flex-row lg:justify-end items-center mb-5">
-        
+
     <div className="hidden lg:block relative aspect-square shadow-xl lg:w-1/3 min-w-[150px] max-w-[200px] lg:mr-auto">
       <Image
         className="rounded"
@@ -10,8 +10,8 @@ export const ResumeHeader: React.FC = () => (
         alt="Picture of me on github"
         fill
       />
-    </div> 
-   
+    </div>
+
 
     <div className="flex flex-col text-center lg:text-right">
       <p>Brazil</p>
@@ -27,7 +27,8 @@ export const ResumeHeader: React.FC = () => (
           <a className="hover:underline" href="mailto:brennopereira6@gmail.com">
             brennopereira6@gmail.com
           </a>
-          <li></li>
+        </li>
+        <li>
           <a className="hover:underline" href="https://github.com/bronen">
             github.com/bronen
           </a>
