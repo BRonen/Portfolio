@@ -9,7 +9,7 @@ export const Resume: React.FC = () => {
   return (
     <div className="md:px-40">
       <div className="flex flex-col md:flex-row justify-between gap-10 my-5 mx-20 md:mx-0">
-        <aside>
+        <aside className="md:max-w-[60%]">
           <ResumeHeader />
           <ResumeDescription />
           <ResumeExperience />
